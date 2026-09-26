@@ -11,11 +11,7 @@ const nav = [
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href={sitePath()} aria-label="Talendos home">
-      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
-        <path d="M32 4 57 18 32 31 7 18 32 4Z"></path>
-        <path d="m5 23 24 13v25L5 48V23Z"></path>
-        <path d="m59 23-24 13v25l24-13V23Z"></path>
-      </svg>
+      <img class="mark" src={sitePath("talendos-logo.svg")} alt="" width="38" height="38" />
       <span class="wordmark">TALENDOS<small>EMERGING VALUES</small></span>
     </a>
     <nav aria-label="Main navigation">
@@ -51,7 +47,7 @@ const nav = [
   .mark {
     width: 2.35rem;
     height: 2.35rem;
-    fill: var(--blue);
+    border-radius: 0.55rem;
   }
   .wordmark {
     display: grid;
