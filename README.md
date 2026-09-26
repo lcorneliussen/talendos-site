@@ -15,14 +15,14 @@ Run `npm run build` for a production build. The contact page deliberately uses a
 
 - Pull requests: formatting, type and build checks
 - `main`: automatic deployment to GitHub Pages through GitHub Actions
-- current preview: `https://lcorneliussen.github.io/talendos-site/`
+- production: `https://talendos.com/`
 
 For the later custom domain `talendos.com`:
 
 1. Point DNS to GitHub Pages.
 2. Set the custom domain in the repository’s Pages settings.
 3. Add `public/CNAME` containing `talendos.com`.
-4. Set `site` in `astro.config.mjs` to `https://talendos.com` and remove `base`.
+4. GitHub automatically provisions HTTPS for `talendos.com` and `www.talendos.com`.
 
 ## Before launch
 
