@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { sitePath } from "../lib/sitePath";
 
 const expertise = [
   {
@@ -36,7 +37,7 @@ const expertise = [
           create real value.
         </p>
         <div class="actions">
-          <a class="button" href="/contact/">Start a conversation</a>
+          <a class="button" href={sitePath("contact/")}>Start a conversation</a>
           <a class="button secondary" href="#expertise">Explore our focus</a>
         </div>
       </div>
@@ -125,7 +126,7 @@ const expertise = [
       <p class="eyebrow">A potential partnership?</p>
       <h2>Let’s see what we can build together.</h2>
       <p>Tell us briefly about the opportunity, challenge or idea.</p>
-      <a class="button" href="/contact/">Get in touch</a>
+      <a class="button" href={sitePath("contact/")}>Get in touch</a>
     </div>
   </section>
 </BaseLayout>

@@ -1,14 +1,16 @@
 ---
+import { sitePath } from "../lib/sitePath";
+
 const nav = [
-  { href: "/#approach", label: "Approach" },
-  { href: "/#expertise", label: "Expertise" },
-  { href: "/contact/", label: "Contact" },
+  { href: sitePath("#approach"), label: "Approach" },
+  { href: sitePath("#expertise"), label: "Expertise" },
+  { href: sitePath("contact/"), label: "Contact" },
 ];
 ---
 
 <header class="site-header">
   <div class="container bar">
-    <a class="brand" href="/" aria-label="Talendos home">
+    <a class="brand" href={sitePath()} aria-label="Talendos home">
       <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
         <path d="M32 4 57 18 32 31 7 18 32 4Z"></path>
         <path d="m5 23 24 13v25L5 48V23Z"></path>
@@ -19,7 +21,7 @@ const nav = [
     <nav aria-label="Main navigation">
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-    <a class="button header-cta" href="/contact/">Let’s talk</a>
+    <a class="button header-cta" href={sitePath("contact/")}>Contact</a>
   </div>
 </header>
 

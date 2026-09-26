@@ -1,0 +1,36 @@
+---
+import { sitePath } from "../lib/sitePath";
+
+export function getStaticPaths() {
+  const redirects = {
+    impressum: "site-notice/",
+    datenschutz: "privacy-policy/",
+    kontakt: "contact/",
+  };
+
+  return Object.entries(redirects).map(([legacy, target]) => ({
+    params: { legacy },
+    props: { target },
+  }));
+}
+
+const { target } = Astro.props;
+const destination = sitePath(target);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0;url=${destination}`} />
+    <link rel="canonical" href={new URL(destination, Astro.site)} />
+    <title>Redirecting – Talendos</title>
+  </head>
+  <body>
+    <p>This page has moved. <a href={destination}>Continue to Talendos</a>.</p>
+    <script define:vars={{ destination }}>
+      window.location.replace(destination);
+    </script>
+  </body>
+</html>

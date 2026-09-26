@@ -1,3 +1,7 @@
+---
+import { sitePath } from "../lib/sitePath";
+---
+
 <footer>
   <div class="container footer-grid">
     <div>
@@ -9,8 +13,8 @@
       <a href="tel:+4923099690200">+49 2309 9690200</a>
     </div>
     <nav aria-label="Legal">
-      <a href="/site-notice/">Site Notice</a>
-      <a href="/privacy-policy/">Privacy Policy</a>
+      <a href={sitePath("site-notice/")}>Site Notice</a>
+      <a href={sitePath("privacy-policy/")}>Privacy Policy</a>
     </nav>
   </div>
 </footer>

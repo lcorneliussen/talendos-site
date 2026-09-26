@@ -1,6 +1,6 @@
 # talendos-site
 
-Static website for Talendos GmbH, built with [Astro](https://astro.build/) for deployment to Cloudflare Pages. The only dynamic route is the contact endpoint in `functions/api/contact.ts`.
+Static website for Talendos GmbH, built with [Astro](https://astro.build/) and published through GitHub Pages.
 
 ## Development
 
@@ -9,42 +9,26 @@ npm install
 npm run dev
 ```
 
-To run the generated site together with the Cloudflare Pages Function:
+Run `npm run build` for a production build. The contact page deliberately uses a simple `mailto:` link and needs no backend or secrets.
 
-```bash
-npm run build
-cp .env.example .dev.vars
-npm run preview
-```
+## Deployment
 
-The example environment uses Cloudflare’s published Turnstile test keys. End-to-end email delivery still requires a configured Cloudflare Email Service binding.
+- Pull requests: formatting, type and build checks
+- `main`: automatic deployment to GitHub Pages through GitHub Actions
+- current preview: `https://lcorneliussen.github.io/talendos-site/`
 
-## Cloudflare Pages
+For the later custom domain `talendos.com`:
 
-- Production branch: `main`
-- Build command: `npm run build`
-- Build output: `dist`
-- Node.js: current LTS release
-
-### One-time setup
-
-1. Connect this repository to a Cloudflare Pages project.
-2. Add `talendos.com` as the custom domain when the migration is ready.
-3. Create a Turnstile widget for the production and preview hostnames.
-4. Set `PUBLIC_TURNSTILE_SITE_KEY` as a build variable.
-5. Set `TURNSTILE_SECRET_KEY` as an encrypted Function secret.
-6. Onboard Cloudflare Email Service for `talendos.com` and verify `info@talendos.com` as the destination.
-7. Confirm the `EMAIL` send binding from `wrangler.jsonc`.
-
-`CONTACT_TO` and `CONTACT_FROM` default to `info@talendos.com` and `website@talendos.com`.
+1. Point DNS to GitHub Pages.
+2. Set the custom domain in the repository’s Pages settings.
+3. Add `public/CNAME` containing `talendos.com`.
+4. Set `site` in `astro.config.mjs` to `https://talendos.com` and remove `base`.
 
 ## Before launch
 
 - Confirm all company and contact details.
-- Obtain legal review of the site notice and privacy policy.
-- Verify the final Cloudflare data-processing configuration against the privacy policy.
-- Test Turnstile and one real email delivery in a Cloudflare preview deployment.
-- Inventory any additional WordPress URLs before switching DNS and add redirects for them.
+- Review the legal pages against the actual GitHub Pages configuration.
+- Inventory any additional WordPress URLs before switching DNS and add redirect pages for them.
 
 ## Content source
 
