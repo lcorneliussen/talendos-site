@@ -11,8 +11,20 @@ const nav = [
 <header class="site-header">
   <div class="container bar">
     <a class="brand" href={sitePath()} aria-label="Talendos home">
-      <img class="mark" src={sitePath("talendos-logo.svg")} alt="" width="38" height="38" />
-      <span class="wordmark">TALENDOS<small>EMERGING VALUES</small></span>
+      <img
+        class="mark"
+        src={sitePath("brand/talendos-symbol-original.png")}
+        alt=""
+        width="38"
+        height="40"
+      />
+      <img
+        class="wordmark"
+        src={sitePath("brand/talendos-wordmark-dark.png")}
+        alt="Talendos"
+        width="164"
+        height="40"
+      />
     </a>
     <nav aria-label="Main navigation">
       {nav.map((item) => <a href={item.href}>{item.label}</a>)}
@@ -46,21 +58,11 @@ const nav = [
   }
   .mark {
     width: 2.35rem;
-    height: 2.35rem;
-    border-radius: 0.55rem;
+    height: auto;
   }
   .wordmark {
-    display: grid;
-    color: var(--navy);
-    font-size: 1rem;
-    letter-spacing: 0.16em;
-    line-height: 1;
-  }
-  .wordmark small {
-    margin-top: 0.35rem;
-    color: var(--ink-soft);
-    font-size: 0.42rem;
-    letter-spacing: 0.28em;
+    width: 9.4rem;
+    height: auto;
   }
   nav {
     display: flex;
@@ -92,8 +94,8 @@ const nav = [
     }
   }
   @media (max-width: 420px) {
-    .wordmark small {
-      display: none;
+    .wordmark {
+      width: 7.4rem;
     }
   }
 </style>

@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
-  <title id="title">Talendos</title>
-  <rect width="512" height="512" rx="112" fill="#0b2030"/>
-  <path d="M256 82 424 176 256 266 88 176 256 82Z" fill="#48a9d6"/>
-  <path d="m72 211 160 87v166L72 376V211Z" fill="#2d86b4"/>
-  <path d="m440 211-160 87v166l160-88V211Z" fill="#f4fbff"/>
-</svg>

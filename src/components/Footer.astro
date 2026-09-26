@@ -5,9 +5,13 @@ import { sitePath } from "../lib/sitePath";
 <footer>
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src={sitePath("talendos-logo.svg")} alt="" width="48" height="48" />
+      <img
+        src={sitePath("brand/talendos-wordmark-white.png")}
+        alt="Talendos"
+        width="181"
+        height="44"
+      />
       <div>
-        <strong>Talendos GmbH</strong>
         <p>Consultancy and investment around digital business platforms.</p>
       </div>
     </div>
@@ -41,13 +45,12 @@ import { sitePath } from "../lib/sitePath";
     color: #aebdca;
   }
   .footer-brand {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
+    display: grid;
+    gap: 0.9rem;
   }
   .footer-brand img {
-    flex: 0 0 auto;
-    border-radius: 0.65rem;
+    width: min(15rem, 100%);
+    height: auto;
   }
   a {
     color: inherit;
