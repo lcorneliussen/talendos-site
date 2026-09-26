@@ -44,11 +44,7 @@ const expertise = [
       <div class="hero-art" aria-hidden="true">
         <div class="orbit orbit-one"></div>
         <div class="orbit orbit-two"></div>
-        <svg viewBox="0 0 64 64">
-          <path d="M32 4 57 18 32 31 7 18 32 4Z"></path>
-          <path d="m5 23 24 13v25L5 48V23Z"></path>
-          <path d="m59 23-24 13v25l24-13V23Z"></path>
-        </svg>
+        <img src={sitePath("brand/talendos-symbol-original.png")} alt="" />
         <span>emerging<br />values</span>
       </div>
     </div>
@@ -165,10 +161,10 @@ const expertise = [
     min-height: 31rem;
     place-items: center;
   }
-  .hero-art svg {
+  .hero-art img {
     z-index: 2;
     width: 9rem;
-    fill: var(--blue);
+    height: auto;
     filter: drop-shadow(0 25px 25px rgb(8 124 175 / 18%));
   }
   .hero-art span {
@@ -269,7 +265,7 @@ const expertise = [
       width: 13rem;
       height: 13rem;
     }
-    .hero-art svg {
+    .hero-art img {
       width: 6rem;
     }
   }
