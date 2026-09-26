@@ -1,0 +1,49 @@
+<footer>
+  <div class="container footer-grid">
+    <div>
+      <strong>Talendos GmbH</strong>
+      <p>Consultancy and investment around digital business platforms.</p>
+    </div>
+    <div>
+      <a href="mailto:info@talendos.com">info@talendos.com</a><br />
+      <a href="tel:+4923099690200">+49 2309 9690200</a>
+    </div>
+    <nav aria-label="Legal">
+      <a href="/site-notice/">Site Notice</a>
+      <a href="/privacy-policy/">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding-block: 3rem;
+    border-top: 1px solid var(--line);
+    background: var(--navy);
+    color: var(--white);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr auto;
+    gap: 2rem;
+    align-items: start;
+  }
+  p {
+    max-width: 30rem;
+    margin-top: 0.4rem;
+    color: #aebdca;
+  }
+  a {
+    color: inherit;
+    text-underline-offset: 0.2em;
+  }
+  nav {
+    display: grid;
+    gap: 0.5rem;
+  }
+  @media (max-width: 680px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://talendos.com/sitemap-index.xml

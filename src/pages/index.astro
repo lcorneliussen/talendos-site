@@ -1,0 +1,275 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const expertise = [
+  {
+    number: "01",
+    title: "Digital business platforms",
+    text: "We help turn business ideas into focused digital products and platforms — with technology serving the problem, not the other way around.",
+  },
+  {
+    number: "02",
+    title: "Product and project consultancy",
+    text: "From early direction to delivery, we bring software knowledge, pragmatic decision-making and close collaboration to complex initiatives.",
+  },
+  {
+    number: "03",
+    title: "Partnership and investment",
+    text: "We work alongside founders, teams and established businesses where a long-term technology partner can unlock emerging value.",
+  },
+];
+---
+
+<BaseLayout
+  title="Talendos – Emerging values through digital business platforms"
+  description="Talendos is a consultancy and investment company centred around digital business platforms, working with clients and partners across Europe."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Consultancy · Investment · Technology</p>
+        <h1>Ideas become valuable when they work.</h1>
+        <p class="lead">
+          Talendos is a consultancy and investment company centred around
+          digital business platforms. We combine software experience with a
+          practical business mindset to turn promising ideas into products that
+          create real value.
+        </p>
+        <div class="actions">
+          <a class="button" href="/contact/">Start a conversation</a>
+          <a class="button secondary" href="#expertise">Explore our focus</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <svg viewBox="0 0 64 64">
+          <path d="M32 4 57 18 32 31 7 18 32 4Z"></path>
+          <path d="m5 23 24 13v25L5 48V23Z"></path>
+          <path d="m59 23-24 13v25l24-13V23Z"></path>
+        </svg>
+        <span>emerging<br />values</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro" id="approach">
+    <div class="container intro-grid">
+      <div>
+        <p class="eyebrow">Small team, European reach</p>
+        <h2>Close collaboration. Clear thinking. Useful software.</h2>
+      </div>
+      <div class="intro-copy">
+        <p class="lead">
+          Located just outside Dortmund in Germany, we are an international team
+          of smart creatives who enjoy applying software knowledge to business
+          problems.
+        </p>
+        <p>
+          With more than a decade of experience in software development, we work
+          closely with clients and partners across Europe to shape, validate and
+          deliver digital products.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tint" id="expertise">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Where we contribute</p>
+        <h2>Technology experience with a business point of view.</h2>
+      </div>
+      <div class="grid cards">
+        {
+          expertise.map((item) => (
+            <article class="card">
+              <span class="number">{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section principles">
+    <div class="container principles-grid">
+      <div>
+        <p class="eyebrow">How we work</p>
+        <h2>Partnership over hand-off.</h2>
+      </div>
+      <ol>
+        <li>
+          <strong>Understand the real problem</strong><span
+            >Start with outcomes, constraints and the people involved.</span
+          >
+        </li>
+        <li>
+          <strong>Find the simplest useful path</strong><span
+            >Make complexity earn its place and keep decisions transparent.</span
+          >
+        </li>
+        <li>
+          <strong>Build with the team</strong><span
+            >Share ownership, knowledge and momentum from idea to operation.</span
+          >
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="container cta-box">
+      <p class="eyebrow">A potential partnership?</p>
+      <h2>Let’s see what we can build together.</h2>
+      <p>Tell us briefly about the opportunity, challenge or idea.</p>
+      <a class="button" href="/contact/">Get in touch</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(5rem, 11vw, 9rem);
+    background:
+      radial-gradient(
+        circle at 78% 20%,
+        rgb(40 169 223 / 18%),
+        transparent 30%
+      ),
+      linear-gradient(135deg, var(--white) 45%, var(--blue-pale));
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: clamp(3rem, 8vw, 8rem);
+    align-items: center;
+  }
+  .hero-copy {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .hero-art {
+    position: relative;
+    display: grid;
+    min-height: 31rem;
+    place-items: center;
+  }
+  .hero-art svg {
+    z-index: 2;
+    width: 9rem;
+    fill: var(--blue);
+    filter: drop-shadow(0 25px 25px rgb(8 124 175 / 18%));
+  }
+  .hero-art span {
+    position: absolute;
+    right: 2rem;
+    bottom: 4rem;
+    z-index: 3;
+    color: var(--navy);
+    font-size: clamp(1.7rem, 3vw, 2.7rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
+  .orbit {
+    position: absolute;
+    border: 1px solid rgb(8 124 175 / 24%);
+    border-radius: 50%;
+  }
+  .orbit-one {
+    width: 28rem;
+    height: 28rem;
+  }
+  .orbit-two {
+    width: 19rem;
+    height: 19rem;
+    border-color: rgb(40 169 223 / 45%);
+  }
+  .intro-grid,
+  .principles-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+  .intro-copy {
+    display: grid;
+    gap: 1.4rem;
+    align-content: start;
+  }
+  .intro-copy > p:last-child {
+    max-width: 43rem;
+    color: var(--ink-soft);
+  }
+  .number {
+    color: var(--blue-dark);
+    font-size: 0.85rem;
+    font-weight: 800;
+  }
+  .card p {
+    color: var(--ink-soft);
+  }
+  .principles-grid ol {
+    display: grid;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    counter-reset: steps;
+    list-style: none;
+  }
+  .principles-grid li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .principles-grid li::before {
+    grid-row: span 2;
+    content: "0" counter(steps);
+    counter-increment: steps;
+    color: var(--blue-dark);
+    font-weight: 800;
+  }
+  .principles-grid span {
+    color: var(--ink-soft);
+  }
+  .cta-box {
+    display: grid;
+    justify-items: start;
+    gap: 1.2rem;
+    padding: clamp(2rem, 6vw, 5rem);
+    border-radius: 2rem;
+    background: var(--blue-pale);
+  }
+  @media (max-width: 800px) {
+    .hero-grid,
+    .intro-grid,
+    .principles-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-art {
+      min-height: 20rem;
+    }
+    .orbit-one {
+      width: 19rem;
+      height: 19rem;
+    }
+    .orbit-two {
+      width: 13rem;
+      height: 13rem;
+    }
+    .hero-art svg {
+      width: 6rem;
+    }
+  }
+</style>

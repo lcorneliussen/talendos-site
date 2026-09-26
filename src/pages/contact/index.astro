@@ -1,0 +1,251 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const siteKey =
+  import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA";
+---
+
+<BaseLayout
+  title="Contact – Talendos"
+  description="Contact Talendos to discuss a digital product, consultancy engagement or potential partnership."
+>
+  <section class="contact-hero">
+    <div class="container">
+      <p class="eyebrow">Contact</p>
+      <h1>What could we build together?</h1>
+      <p class="lead">
+        Tell us about the opportunity, challenge or idea. We’ll get back to you
+        personally.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <form id="contact-form" action="/api/contact" method="post">
+        <div class="row">
+          <label
+            >First name<input
+              name="firstName"
+              autocomplete="given-name"
+              required
+              maxlength="80"
+            /></label
+          >
+          <label
+            >Last name<input
+              name="lastName"
+              autocomplete="family-name"
+              required
+              maxlength="80"
+            /></label
+          >
+        </div>
+        <label
+          >Email address<input
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+            maxlength="254"
+          /></label
+        >
+        <label
+          >Phone <span>(optional)</span><input
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            maxlength="50"
+          /></label
+        >
+        <label
+          >Your message<textarea
+            name="message"
+            rows="7"
+            required
+            maxlength="5000"></textarea></label
+        >
+        <label class="honeypot" aria-hidden="true"
+          >Company website<input
+            name="companyWebsite"
+            tabindex="-1"
+            autocomplete="off"
+          /></label
+        >
+        <label class="consent"
+          ><input
+            name="privacy"
+            type="checkbox"
+            value="accepted"
+            required
+          /><span
+            >I have read the <a href="/privacy-policy/" target="_blank"
+              >Privacy Policy</a
+            > and consent to the processing of my information to answer this enquiry.</span
+          ></label
+        >
+        <div
+          class="cf-turnstile"
+          data-sitekey={siteKey}
+          data-action="contact"
+          data-theme="light"
+        >
+        </div>
+        <button class="button" type="submit">Send message</button>
+        <p id="form-status" class="status" role="status" aria-live="polite"></p>
+      </form>
+      <aside>
+        <p class="eyebrow">Direct contact</p>
+        <h2>Talendos GmbH</h2>
+        <address>Richtstrecke 16a<br />45731 Waltrop<br />Germany</address>
+        <div>
+          <a href="mailto:info@talendos.com">info@talendos.com</a><br />
+          <a href="tel:+4923099690200">+49 2309 9690200</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer></script>
+</BaseLayout>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("#contact-form");
+  const status = document.querySelector<HTMLElement>("#form-status");
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = form.querySelector<HTMLButtonElement>(
+      "button[type='submit']",
+    );
+    if (!button || !status) return;
+    button.disabled = true;
+    status.textContent = "Sending your message …";
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+      const result = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
+      if (!response.ok || !result.success)
+        throw new Error(result.message || "Your message could not be sent.");
+      form.reset();
+      status.textContent =
+        result.message || "Thank you. Your message has been sent.";
+      window.turnstile?.reset();
+    } catch (error) {
+      status.textContent =
+        error instanceof Error
+          ? error.message
+          : "Your message could not be sent.";
+      window.turnstile?.reset();
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
+
+<style>
+  .contact-hero {
+    padding-block: clamp(5rem, 11vw, 8rem);
+    background: var(--blue-pale);
+  }
+  .contact-hero .container {
+    display: grid;
+    gap: 1.4rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(3rem, 9vw, 8rem);
+  }
+  form {
+    display: grid;
+    gap: 1.2rem;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  label {
+    display: grid;
+    gap: 0.4rem;
+    font-weight: 750;
+  }
+  label span {
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    font-weight: 500;
+  }
+  input,
+  textarea {
+    width: 100%;
+    border: 1px solid #a9bdc9;
+    border-radius: 0.65rem;
+    padding: 0.8rem 0.9rem;
+    background: var(--white);
+    color: var(--ink);
+  }
+  input:focus,
+  textarea:focus {
+    border-color: var(--blue-dark);
+    outline: 3px solid rgb(40 169 223 / 22%);
+  }
+  .consent {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    font-weight: 500;
+  }
+  .consent input {
+    width: 1.1rem;
+    margin-top: 0.3rem;
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+  }
+  button {
+    justify-self: start;
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: wait;
+    opacity: 0.6;
+  }
+  .status {
+    min-height: 1.6rem;
+    color: var(--blue-dark);
+    font-weight: 700;
+  }
+  aside {
+    display: grid;
+    align-content: start;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: var(--radius);
+    background: var(--mist);
+  }
+  address {
+    color: var(--ink-soft);
+    font-style: normal;
+  }
+  aside a {
+    text-underline-offset: 0.2em;
+  }
+  @media (max-width: 740px) {
+    .contact-grid,
+    .row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script is:inline>
+  window.turnstile = window.turnstile || undefined;
+</script>
