@@ -12,13 +12,6 @@ const nav = [
   <div class="container bar">
     <a class="brand" href={sitePath()} aria-label="Talendos home">
       <img
-        class="mark"
-        src={sitePath("brand/talendos-symbol-original.png")}
-        alt=""
-        width="38"
-        height="40"
-      />
-      <img
         class="wordmark"
         src={sitePath("brand/talendos-wordmark-dark.png")}
         alt="Talendos"
@@ -51,17 +44,12 @@ const nav = [
   .brand {
     display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
     margin-right: auto;
     font-weight: 800;
     text-decoration: none;
   }
-  .mark {
-    width: 2.35rem;
-    height: auto;
-  }
   .wordmark {
-    width: 9.4rem;
+    width: 12rem;
     height: auto;
   }
   nav {
@@ -95,7 +83,7 @@ const nav = [
   }
   @media (max-width: 420px) {
     .wordmark {
-      width: 7.4rem;
+      width: 9rem;
     }
   }
 </style>
