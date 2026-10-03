@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && npm run privacy:check",
     "preview": "astro preview",
     "check": "astro check",
     "format:check": "prettier --check .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "privacy:check": "node scripts/privacy-check.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "3.7.4",
