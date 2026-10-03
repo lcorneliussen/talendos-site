@@ -11,6 +11,8 @@ npm run dev
 
 Run `npm run build` for a production build. The contact page deliberately uses a simple `mailto:` link and needs no backend or secrets.
 
+The production build includes `npm run privacy:check`. It fails if generated pages contain scripts, iframes, forms, browser-storage access, known trackers, or externally loaded resources. This preserves the site’s consent-free static delivery model.
+
 ## Deployment
 
 - Pull requests: formatting, type and build checks
